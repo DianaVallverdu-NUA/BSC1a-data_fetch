@@ -1,10 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.flex-column {
+  flex-direction: column;
+}
+
 #main-container {
   width: 100vw;
   height: 100vh;
+}
+
+#image {
+  height: 300px;
+  max-width: 95%;
 }
