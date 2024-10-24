@@ -1,3 +1,4 @@
+const SINGLE_BREED_API = "https://dog.ceo/api/breed";
 const RANDOM_DOG_API_URL = "https://dog.ceo/api/breeds/image/random";
 const ALL_BREEDS_API_URL = "https://dog.ceo/api/breeds/list";
 
@@ -9,8 +10,17 @@ const breedsSelect = document.getElementById("breeds-select");
  *
  */
 async function fetchRandom() {
-  const imageURL = await fetchURL(RANDOM_DOG_API_URL);
+  let imageURL;
+
+  if (breedsSelect.value === "any")
+    imageURL = await fetchURL(RANDOM_DOG_API_URL);
+  else {
+    imageURL = await fetchURL(SINGLE_BREED_API + "/" + breedsSelect.value + "/images/random")
+  }
+
   image.src = imageURL;
+
+
 }
 
 /**
@@ -19,11 +29,10 @@ async function fetchRandom() {
 async function fetchPossibleBreeds() {
   const breedsList = await fetchURL(ALL_BREEDS_API_URL);
 
-  for (const index in breedsList) {
-    const breed = breedsList[index];
+  for (const breed of breedsList) {
     const newOption = document.createElement("option");
     newOption.text = breed;
-    breedsSelect.options.add(newOption, index);
+    breedsSelect.options.add(newOption, breed);
   }
 }
 
