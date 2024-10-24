@@ -19,9 +19,22 @@ async function fetchRandom() {
   if (breedsSelect.value === "any")
     imageURL = await fetchURL(RANDOM_DOG_API_URL);
   else {
-    imageURL = await fetchURL(
-      SINGLE_BREED_API + "/" + breedsSelect.value + "/images/random"
-    );
+    if (subBreedsSelect.value === "any") {
+      const apiURL =
+        SINGLE_BREED_API + "/" + breedsSelect.value + "/images/random";
+
+      imageURL = await fetchURL(apiURL);
+    } else {
+      const apiURL =
+        SINGLE_BREED_API +
+        "/" +
+        breedsSelect.value +
+        "/" +
+        subBreedsSelect.value +
+        "/images/random";
+
+      imageURL = await fetchURL(apiURL);
+    }
   }
 
   image.src = imageURL;
