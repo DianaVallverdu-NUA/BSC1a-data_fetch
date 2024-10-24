@@ -17,13 +17,18 @@
     <div id="main-container" class="container flex-column">
       <img id="image" />
       <div class="container flex-column">
-        <select id="breeds-select">
-          <option value="any">any</option>
-        </select>
-
-        <select id="sub-breeds-select">
-          <option value="any">any</option>
-        </select>
+        <div class="container">
+          <p>Breed:</p>
+          <select id="breeds-select">
+            <option value="any">any</option>
+          </select>
+        </div>
+        <div class="container">
+          <p>Sub Breed:</p>
+          <select id="sub-breeds-select">
+            <option value="any">any</option>
+          </select>
+        </div>
 
         <button id="random-button">Get Random Dog</button>
       </div>

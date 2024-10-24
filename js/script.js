@@ -54,8 +54,7 @@ async function fetchPossibleBreeds() {
 }
 
 async function fetchSubBreeds() {
-  if (breedsSelect.value === "any")
-    throw Error("breed must be selectd to fetch sub breeds");
+  if (breedsSelect.value === "any") return;
 
   //restart select
   while (subBreedsSelect.options.length > 0) {
