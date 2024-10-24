@@ -1,11 +1,9 @@
 /**
- * gets a random dog form the api
- * @returns json with image url
+ * fetch given a url
+ * @param {*} url 
+ * @returns 
  */
-async function getRandomDog() {
-  //random url
-  const url = "https://dog.ceo/api/breeds/image/random";
-
+async function fetchURL(url) {
   try {
     //get response
     const response = await fetch(url);
@@ -15,28 +13,10 @@ async function getRandomDog() {
       throw new Error(`Response status: ${response.status}`);
     }
 
-    //transform response to json -{message: `url`; status: 'success'}
+    //transform response to json -{message: info needed; status: 'success'}
     const json = await response.json();
-    return json;
-
-    //log error if error
+    return json.message;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
-}
-
-/**
- * on success update image source what's stored in the message
- * @param {Object} result {message: `url`, status: `status`}
- */
-function onFetchSuccess(result) {
-  image.src = result.message;
-}
-
-/**
- * if an error is thrown -> display in console
- * @param {Error} error 
- */
-function onFetchError(error) {
-  console.error(error);
 }
