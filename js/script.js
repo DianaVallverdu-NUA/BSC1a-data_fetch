@@ -1,10 +1,14 @@
-const SINGLE_BREED_API = "https://dog.ceo/api/breed";
 const RANDOM_DOG_API_URL = "https://dog.ceo/api/breeds/image/random";
+const SINGLE_BREED_API = "https://dog.ceo/api/breed";
 const ALL_BREEDS_API_URL = "https://dog.ceo/api/breeds/list";
 
 const image = document.getElementById("image");
 const getRandomButton = document.getElementById("random-button");
 const breedsSelect = document.getElementById("breeds-select");
+const subBreedsSelect = document.getElementById("sub-breeds-select");
+
+const optionAny = document.createElement("option");
+optionAny.text = "any";
 
 /**
  *
@@ -15,12 +19,12 @@ async function fetchRandom() {
   if (breedsSelect.value === "any")
     imageURL = await fetchURL(RANDOM_DOG_API_URL);
   else {
-    imageURL = await fetchURL(SINGLE_BREED_API + "/" + breedsSelect.value + "/images/random")
+    imageURL = await fetchURL(
+      SINGLE_BREED_API + "/" + breedsSelect.value + "/images/random"
+    );
   }
 
   image.src = imageURL;
-
-
 }
 
 /**
@@ -36,7 +40,31 @@ async function fetchPossibleBreeds() {
   }
 }
 
+async function fetchSubBreeds() {
+  if (breedsSelect.value === "any")
+    throw Error("breed must be selectd to fetch sub breeds");
+
+  //restart select
+  while (subBreedsSelect.options.length > 0) {
+    subBreedsSelect.remove(0);
+  }
+
+  //add first option
+  subBreedsSelect.options.add(optionAny, "any");
+
+  const url = SINGLE_BREED_API + "/" + breedsSelect.value + "/list";
+
+  const subBreedsList = await fetchURL(url);
+
+  for (const breed of subBreedsList) {
+    const newOption = document.createElement("option");
+    newOption.text = breed;
+    subBreedsSelect.options.add(newOption, breed);
+  }
+}
+
 getRandomButton.onclick = fetchRandom;
+breedsSelect.onchange = fetchSubBreeds;
 
 fetchRandom();
 fetchPossibleBreeds();
