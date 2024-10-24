@@ -1,5 +1,3 @@
-const image = document.getElementById("image");
-
 /**
  * gets a random dog form the api
  * @returns json with image url
@@ -31,7 +29,7 @@ async function getRandomDog() {
  * on success update image source what's stored in the message
  * @param {Object} result {message: `url`, status: `status`}
  */
-function onSuccess(result) {
+function onFetchSuccess(result) {
   image.src = result.message;
 }
 
@@ -39,8 +37,6 @@ function onSuccess(result) {
  * if an error is thrown -> display in console
  * @param {Error} error 
  */
-function onError(error) {
+function onFetchError(error) {
   console.error(error);
 }
-
-getRandomDog().then(onSuccess, onError);
