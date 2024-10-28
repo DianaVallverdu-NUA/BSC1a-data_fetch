@@ -1,5 +1,6 @@
 const favDiv = document.getElementById("favourites-div");
 const favButton = document.getElementById("add-fav-button");
+const downloadAllButton = document.getElementById("download-all");
 
 const favDogs = [];
 
@@ -76,6 +77,15 @@ function createNewFavouriteDog() {
   favDiv.append(containingDiv);
 }
 
+/**
+ * Download all images contained in the favDogs array
+ */
+function onDownlaodAllClick() {
+  for (const source of favDogs) {
+    downloadImage(source);
+  }
+}
+
 function favButtonOnClick() {
   if (!favDogs.includes(currentImgSrc)) {
     favDogs.push(currentImgSrc);
@@ -85,3 +95,4 @@ function favButtonOnClick() {
 }
 
 favButton.onclick = favButtonOnClick;
+downloadAllButton.onclick = onDownlaodAllClick;
