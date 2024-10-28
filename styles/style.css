@@ -92,7 +92,7 @@ h2 {
 
 #main-container {
   width: 100vw;
-  min-height: 100vh;
+  min-height: 700px;
   background-color: rgb(77, 203, 199);
 }
 
