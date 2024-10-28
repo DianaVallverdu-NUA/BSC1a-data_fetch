@@ -14,9 +14,21 @@
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-left {
+  justify-content: left;
+}
+
+.favourite-img {
+  width: 40px;
+  height: 40px;
+}
+
 #main-container {
   width: 100vw;
-  height: 100vh;
 }
 
 #image {

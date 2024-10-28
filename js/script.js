@@ -37,6 +37,8 @@ async function fetchRandom() {
     }
   }
 
+  currentImg = imageURL;
+
   image.src = imageURL;
 }
 

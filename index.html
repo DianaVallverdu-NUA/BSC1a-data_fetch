@@ -11,11 +11,20 @@
     <!-- link scripts -->
     <script src="js/data.js"></script>
     <script src="js/script.js" defer></script>
+    <script src="js/favorites.js" defer></script>
   </head>
 
   <body>
     <div id="main-container" class="container flex-column">
+      <!-- list of favorites -->
+      <div id="favourites-div" class="container flex-column">
+
+      </div>
+
+      <!-- dog display -->
       <img id="image" />
+
+      <!-- breed selectors -->
       <div class="container flex-column">
         <div class="container">
           <p>Breed:</p>
@@ -31,6 +40,8 @@
         </div>
 
         <button id="random-button">Get Random Dog</button>
+
+        <button id="add-fav-button">Add To Favourites</button>
       </div>
     </div>
   </body>
