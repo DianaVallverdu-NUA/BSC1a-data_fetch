@@ -22,6 +22,10 @@
 
 }
 
+.button-small {
+  padding: 5px 5px;
+}
+
 .container {
   display: flex;
   justify-content: center;
