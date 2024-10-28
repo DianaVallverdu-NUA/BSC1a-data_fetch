@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <div id="main-container" class="container flex-column">
+    <div id="main-container" class="container flex-column justify-evenly">
       <!-- list of favorites -->
       <div id="favourites-div" class="container flex-column">
 
@@ -25,7 +25,7 @@
       <img id="image" />
 
       <!-- breed selectors -->
-      <div class="container flex-column">
+      <div id="breed-selector" class="container flex-column justify-evenly">
         <div class="container">
           <p>Breed:</p>
           <select id="breeds-select">
@@ -39,9 +39,9 @@
           </select>
         </div>
 
-        <button id="random-button">Get Random Dog</button>
+        <button id="random-button" class="button">Get Random Dog</button>
 
-        <button id="add-fav-button">Add To Favourites</button>
+        <button id="add-fav-button" class="button">Add To Favourites</button>
       </div>
     </div>
   </body>
