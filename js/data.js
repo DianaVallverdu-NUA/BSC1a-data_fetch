@@ -1,7 +1,7 @@
 /**
  * fetch given a url
- * @param {*} url 
- * @returns 
+ * @param {*} url
+ * @returns
  */
 async function fetchURL(url) {
   try {
@@ -19,4 +19,21 @@ async function fetchURL(url) {
   } catch (error) {
     console.error(error);
   }
+}
+
+/**
+ * Download image from image source
+ * @param {*} imageSrc
+ */
+async function downloadImage(imageSrc) {
+  const image = await fetch(imageSrc);
+  const imageBlog = await image.blob();
+  const imageURL = URL.createObjectURL(imageBlog);
+
+  const link = document.createElement("a");
+  link.href = imageURL;
+  link.download = "cuteDog";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
