@@ -41,11 +41,6 @@ function favButtonOnClick() {
     favDogs.push(currentImg);
 
     createNewFavouriteDog();
-
-    // const newImage = document.createElement("img");
-    // newImage.src = currentImg;
-    // newImage.classList.add("favourite-ul");
-    // favDiv.append(newImage);
   }
 }
 
