@@ -14,17 +14,26 @@ optionAny.text = "any";
  *
  */
 async function fetchRandom() {
-  let imageURL;
+  currentBreed = "";
+  currentSubBreed = "";
 
+  //check if breed is present or download any random dog
   if (breedsSelect.value === "any")
-    imageURL = await fetchURL(RANDOM_DOG_API_URL);
+    currentImgSrc = await fetchURL(RANDOM_DOG_API_URL);
   else {
+    //store current breed
+    currentBreed = breedsSelect.value;
+
+    //check if subreed is present or download any dog from current breed
     if (subBreedsSelect.value === "any") {
       const apiURL =
         SINGLE_BREED_API + "/" + breedsSelect.value + "/images/random";
 
-      imageURL = await fetchURL(apiURL);
+      currentImgSrc = await fetchURL(apiURL);
     } else {
+      //store current sub breed
+      currentSubBreed = subBreedsSelect.value;
+
       const apiURL =
         SINGLE_BREED_API +
         "/" +
@@ -33,13 +42,12 @@ async function fetchRandom() {
         subBreedsSelect.value +
         "/images/random";
 
-      imageURL = await fetchURL(apiURL);
+      currentImgSrc = await fetchURL(apiURL);
     }
   }
 
-  currentImg = imageURL;
-
-  image.src = imageURL;
+  //update image displayed
+  image.src = currentImgSrc;
 }
 
 /**

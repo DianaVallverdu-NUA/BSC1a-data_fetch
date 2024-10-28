@@ -22,9 +22,16 @@
   justify-content: left;
 }
 
+.favourite-container {
+  justify-content: space-between;
+  width: 100%;
+}
+
 .favourite-img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 #main-container {
@@ -34,4 +41,10 @@
 #image {
   height: 300px;
   max-width: 95%;
+}
+
+#favourites-div {
+  width: 200px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

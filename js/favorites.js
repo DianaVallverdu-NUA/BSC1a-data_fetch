@@ -3,19 +3,15 @@ const favButton = document.getElementById("add-fav-button");
 
 const favDogs = [];
 
-let currentImg = "";
+let currentImgSrc = "";
 let currentBreed = "";
 let currentSubBreed = "";
 
 function createNewFavouriteDog() {
   //image
   const newImage = document.createElement("img");
-  newImage.src = currentImg;
+  newImage.src = currentImgSrc;
   newImage.classList.add("favourite-img");
-
-  //text
-  const newP = document.createElement("p");
-  newP.innerHTML = currentBreed + " " + currentSubBreed;
 
   //buttons
   const downloadButton = document.createElement("button");
@@ -27,9 +23,9 @@ function createNewFavouriteDog() {
   //containing div
   const containingDiv = document.createElement("div");
   containingDiv.classList.add("container");
+  containingDiv.classList.add("favourite-container");
 
   containingDiv.appendChild(newImage);
-  containingDiv.appendChild(newP);
   containingDiv.appendChild(downloadButton);
   containingDiv.appendChild(removeButton);
 
@@ -37,8 +33,8 @@ function createNewFavouriteDog() {
 }
 
 function favButtonOnClick() {
-  if (!favDogs.includes(currentImg)) {
-    favDogs.push(currentImg);
+  if (!favDogs.includes(currentImgSrc)) {
+    favDogs.push(currentImgSrc);
 
     createNewFavouriteDog();
   }
