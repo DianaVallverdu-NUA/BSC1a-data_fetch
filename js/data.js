@@ -26,13 +26,16 @@ async function fetchURL(url) {
  * @param {*} imageSrc
  */
 async function downloadImage(imageSrc) {
+  console.log(imageSrc);
   const image = await fetch(imageSrc);
   const imageBlog = await image.blob();
   const imageURL = URL.createObjectURL(imageBlog);
 
+  console.log(imageURL);
+
   const link = document.createElement("a");
   link.href = imageURL;
-  link.download = "cuteDog";
+  link.download = "cuteDog.png";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

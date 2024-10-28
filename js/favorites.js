@@ -10,7 +10,7 @@ let currentSubBreed = "";
 /**
  * remove given dog from favorites
  */
-function removeFavorite(event) {
+function onRemoveClick(event) {
   // Get the clicked button element
   const clickedButton = event.target;
 
@@ -26,6 +26,15 @@ function removeFavorite(event) {
   //Remove from array
   const index = favDogs.indexOf(imageSource);
   favDogs.splice(index, 1);
+}
+
+function onDownloadClick(event) {
+  //get image source
+  const clickedButton = event.target;
+  const parent = clickedButton.closest("div");
+  const imageSource = parent.querySelector("img").src;
+
+  downloadImage(imageSource);
 }
 
 /**
@@ -45,7 +54,7 @@ function createNewFavouriteDog() {
   downloadButton.classList.add("button");
   downloadButton.classList.add("button-small");
 
-  downloadButton.onclick = downloadImage;
+  downloadButton.onclick = onDownloadClick;
 
   const removeButton = document.createElement("button");
   removeButton.innerHTML =
@@ -53,7 +62,7 @@ function createNewFavouriteDog() {
   removeButton.classList.add("button");
   removeButton.classList.add("button-small");
 
-  removeButton.onclick = removeFavorite;
+  removeButton.onclick = onRemoveClick;
 
   //containing div
   const containingDiv = document.createElement("div");
