@@ -9,6 +9,10 @@
   overflow-x: hidden;
 }
 
+body {
+  background-color: rgb(77, 203, 199);
+}
+
 h1,
 h2 {
   font-family: "Kablammo", system-ui;
@@ -90,10 +94,9 @@ h2 {
   margin-top: 5px;
 }
 
-#main-container {
+#generator-container {
   width: 100vw;
-  min-height: 700px;
-  background-color: rgb(77, 203, 199);
+  height: 600px;
 }
 
 #favourites-div {
