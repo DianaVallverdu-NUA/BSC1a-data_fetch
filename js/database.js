@@ -41,7 +41,29 @@ async function fetchBreedPossibilities() {
         newOption.text = breed;
         breedSelect.options.add(newOption, breed);
     }
+}
 
+async function fetchSubBreedPossibilities() {
+    while (subBreedSelect.options.length > 0) {
+        subBreedSelect.remove(0); //removes the option at position 0
+    }
+
+    const newOption = document.createElement("option");
+    newOption.text = "any";
+    subBreedSelect.options.add(newOption, "any");
+
+    if(breedSelect.value === "any") return;
+
+    const breedListUrl = "https://dog.ceo/api/breed/" + breedSelect.value + "/list";
+
+    const breedsList = await fetchFromAPI(breedListUrl);
+
+    for (const breed of breedsList) {
+        //populate breed select
+        const newOption = document.createElement("option"); //create new option element
+        newOption.text = breed;
+        subBreedSelect.options.add(newOption, breed);
+    }
 }
 
 async function fetchRandomDog() {
@@ -49,8 +71,12 @@ async function fetchRandomDog() {
     let randomDogUrl = "https://dog.ceo/api/breeds/image/random";
 
     //update with breed if needed
-    if(breedSelect.value !== "any") {
+    if (breedSelect.value !== "any") {
         randomDogUrl = "https://dog.ceo/api/breed/" + breedSelect.value + "/images/random";
+
+        if(subBreedSelect.value !== "any") {
+            randomDogUrl = "https://dog.ceo/api/breed/" + breedSelect.value + "/" + subBreedSelect.value + "/images/random"
+        }
     }
 
     //get image source from api
@@ -62,6 +88,7 @@ async function fetchRandomDog() {
 
 //link buttons to events
 randomDogButton.onclick = fetchRandomDog;
+breedSelect.onchange = fetchSubBreedPossibilities;
 
 //functions to be executed at the beginning of the code
 fetchRandomDog();
