@@ -12,10 +12,18 @@
     justify-content: left;
 }
 
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
 .favourite-img {
     height: 100px;
     width: 100px;
     object-fit: cover;
+}
+
+.favourite-card {
+    padding: 5px;
 }
 
 #generator-div {
