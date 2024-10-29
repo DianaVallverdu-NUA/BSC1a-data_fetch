@@ -45,12 +45,19 @@ async function fetchBreedPossibilities() {
 }
 
 async function fetchRandomDog() {
-        const randomDogUrl = "https://dog.ceo/api/breeds/image/random";
+    //define random dog url
+    let randomDogUrl = "https://dog.ceo/api/breeds/image/random";
 
-        const imageSource = await fetchFromAPI(randomDogUrl);
+    //update with breed if needed
+    if(breedSelect.value !== "any") {
+        randomDogUrl = "https://dog.ceo/api/breed/" + breedSelect.value + "/images/random";
+    }
 
-        //update image with received source
-        dogImage.src = imageSource;
+    //get image source from api
+    const imageSource = await fetchFromAPI(randomDogUrl);
+
+    //update image with received source
+    dogImage.src = imageSource;
 }
 
 //link buttons to events
