@@ -6,59 +6,51 @@ const randomDogButton = document.getElementById("random-dog-button");
 const breedSelect = document.getElementById("breed-select");
 const subBreedSelect = document.getElementById("sub-breed-select");
 
-async function fetchBreedPossibilities() {
-    const breedListUrl = "https://dog.ceo/api/breeds/list";
-
-    //try to fetch url and display error otherwise
+/**
+ * Fetch information from any api and return the data in message
+ * @param {string} url url to be fetched
+ */
+async function fetchFromAPI(url) {
     try {
         //get response from api
-        const response = await fetch(breedListUrl);
+        const response = await fetch(url);
 
-        //check response ok
+        //check response is ok
         if (!response.ok) {
             throw new Error("Response status: " + response.status);
         }
 
-        //transform response to json
+        //get json from response
         const json = await response.json();
 
-        const breedsList = json.message;
-
-        for (const breed of breedsList) {
-            //populate breed select
-            const newOption = document.createElement("option"); //create new option element
-            newOption.text = breed;
-            breedSelect.options.add(newOption, breed);
-        }
-
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-async function fetchRandomDog() {
-    try {
-        //random dog url
-        const randomDogUrl = "https://dog.ceo/api/breeds/image/random";
-
-        //get response from server
-        const response = await fetch(randomDogUrl);
-
-        //check response is ok
-        if(!response.ok) {
-            throw new Error("Response status: " + response.status);
-        }
-
-        //get json and message objects
-        const json = await response.json();
-        const message = json.message;
-
-        //update image with received source
-        dogImage.src = message;
+        return json.message;
 
     } catch (error) {
         console.log(error);
     }
+}
+
+async function fetchBreedPossibilities() {
+    const breedListUrl = "https://dog.ceo/api/breeds/list";
+
+    const breedsList = await fetchFromAPI(breedListUrl);
+
+    for (const breed of breedsList) {
+        //populate breed select
+        const newOption = document.createElement("option"); //create new option element
+        newOption.text = breed;
+        breedSelect.options.add(newOption, breed);
+    }
+
+}
+
+async function fetchRandomDog() {
+        const randomDogUrl = "https://dog.ceo/api/breeds/image/random";
+
+        const imageSource = await fetchFromAPI(randomDogUrl);
+
+        //update image with received source
+        dogImage.src = imageSource;
 }
 
 //link buttons to events
