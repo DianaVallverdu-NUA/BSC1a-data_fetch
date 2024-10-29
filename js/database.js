@@ -83,6 +83,7 @@ async function fetchRandomDog() {
     const imageSource = await fetchFromAPI(randomDogUrl);
 
     //update image with received source
+    currentImage = imageSource;
     dogImage.src = imageSource;
 }
 

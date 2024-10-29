@@ -12,6 +12,12 @@
     justify-content: left;
 }
 
+.favourite-img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
 #generator-div {
     min-height: 600px;
 }

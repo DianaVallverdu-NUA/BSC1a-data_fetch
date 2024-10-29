@@ -10,6 +10,7 @@
 
     <!-- JS scripts -->
     <script src="js/database.js" defer></script>
+    <script src="js/favourites.js" defer></script>
     <title>Document</title>
 </head>
 
@@ -44,20 +45,20 @@
             <button id="random-dog-button">Get Random Dog</button>
 
             <!-- add dog to favourites list & display -->
-            <button>Add To Favourites</button>
+            <button id="add-favourite-button">Add To Favourites</button>
         </div>
     </div>
 
     <!-- favourites -->
     <div class="container flex-column">
-        <div>
-            <div>
-                <!-- title -->
-                <h2>Your Favourites</h2>
-            </div>
+        <div id="favourites-div">
+            <!-- title -->
+            <h2>Your Favourites</h2>
 
-            <button>Download all Favourites</button>
+            <!-- new favourite images will be added -->
         </div>
+
+        <button>Download all Favourites</button>
     </div>
 </body>
 
