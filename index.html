@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- styles -->
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- JS scripts -->
+    <script src="js/database.js" defer></script>
     <title>Document</title>
 </head>
+
 <body>
     <!-- random dog generation -->
-    <div>
+    <div id="generator-div" class="container flex-column">
         <!-- title -->
         <h1>Random Dog Generator</h1>
 
         <!-- random image display -->
-         <img alt="a random dog is displayed">
+        <img id="dog-image" alt="a random dog is displayed">
 
         <!-- generator -->
-         <div>
+        <div>
             <!-- breed selector -->
-            <div>
+            <div class="container justify-left">
                 <p>Breed: </p>
-                <select>
+                <select id="breed-select">
                     <option>any</option>
                 </select>
             </div>
 
             <!-- sub breed selector -->
-             <div>
+            <div class="container justify-left">
                 <p>Sub Breed:</p>
-                <select>
+                <select id="sub-breed-select">
                     <option>any</option>
                 </select>
-             </div>
-         </div>
+            </div>
+
+            <!-- get a random dog with specific breed & sub breed -->
+            <button id="random-dog-button">Get Random Dog</button>
+
+            <!-- add dog to favourites list & display -->
+            <button>Add To Favourites</button>
+        </div>
     </div>
 
     <!-- favourites -->
-    <div>
+    <div class="container flex-column">
         <div>
             <div>
                 <!-- title -->
@@ -46,4 +60,5 @@
         </div>
     </div>
 </body>
+
 </html>

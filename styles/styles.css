@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-left {
+    justify-content: left;
+}
+
+#generator-div {
+    min-height: 600px;
+}
+
+#dog-image {
+    height: 300px;
+}
