@@ -201,3 +201,7 @@ if(subBreedSelect.value !== "any") {
 ```
 
 Now, your subbreed selector should be working.
+
+### Favourites
+
+The step by step of the Favourites List has not been added as it was an addition unrelated to data fetching. You can look at the `favourites.js` file to learn that.
